@@ -1,14 +1,13 @@
 package com.zipcodewilmington.scientificcalculator;
 
 import java.util.Scanner;
-import java.util.function.BinaryOperator;
-import java.util.*;
 
 
 
 
 class Switch {
-    public static void main (String[] args) {
+    public static void main (String[] args) 
+    {
         Scanner sd = new Scanner(System.in);
 
         System.out.println("Decimal, Binary, Octal, or Hex");
@@ -56,7 +55,8 @@ class Switch {
 
 
 class Trig {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Radian or Degree? "); // Ask for Radian or Degree

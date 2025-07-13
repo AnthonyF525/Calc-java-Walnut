@@ -5,32 +5,142 @@
 
 package com.zipcodewilmington.scientificcalculator;
 
+import java.util.Scanner;
 
 class ScientificCalculator 
-{
-    private static double Currentvaluedisplay = 0.0; // current number on screen
+{   private static double Currentvaluedisplay = 0.0; // current number on screen
     private boolean Error = false;  // flag if an error happened
+    public double memory = 0.0; // starting value of memory
 
-    public static long factorial(long x) //method to calculate factorial
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Anthony's work
+    public static void switchmode () // 9.switch mode
     {
-        //if (Currentvaluedisplay<0)
-        //{
-        //throw new IllegalArgumentException("Factroial not defined for negative numbers");
-        //}
-        long result =1;  // factorial of zero is always zero 
-        for (int i=1;i <=Currentvaluedisplay;i++)
-        {   
-        result = result *i;
+        Scanner sd = new Scanner(System.in);
+
+        System.out.println("Decimal, Binary, Octal, or Hex");
+        String mode = sd.nextLine();
+        
+
+        switch (mode.toLowerCase()) {
+            case "decimal": // Select Decimal mode
+                System.out.println(mode + " mode selected.");
+                break;
+            case "binary": // Select Binary mode
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toBinaryString(sd.nextInt()));
+                break;
+            case "octal": // Select Octal mode
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toOctalString(sd.nextInt()));
+                break;
+            case "hex": // Select Hexadecimal mode
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toHexString(sd.nextInt()));
+                break;
+            default:
+                break;
         }
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void trigfunction() // function 10
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Radian or Degree? "); // Ask for Radian or Degree
+        String radianOrDegree = sc.nextLine();
+
+        if (radianOrDegree.equalsIgnoreCase("degree")){
+            System.out.println("Which Operation? (sin, cos, tan, asin, acos, atan):"); //Ask for the operation
+            String operation = sc.nextLine();
+            switch (operation) {
+                case "sin": // Perform sine operation, Radian
+                    System.out.print("What number do you want in the sin? ");
+                    System.out.println(Math.sin(Math.toRadians(sc.nextInt())));
+                    break;
+                case "cos": // Perform cosine operation, Radian
+                    System.out.print("What number do you want in the cos? ");
+                    System.out.println(Math.cos(Math.toRadians(sc.nextInt())));
+                    break;
+                case "tan": // Perform tangent operation, Radian
+                    System.out.print("What number do you want in the tan? ");
+                    System.out.println(Math.tan(Math.toRadians(sc.nextInt())));
+                    break;
+                case "asin": // Perform arcsine operation, Radian
+                    System.out.print("What number do you want in the asin? ");
+                    System.out.println(Math.asin(Math.toRadians(sc.nextInt())));
+                    break;
+                case "acos": // Perform arccosine operation, Radian
+                    System.out.print("What number do you want in the acos? ");
+                    System.out.println(Math.acos(Math.toRadians(sc.nextInt())));
+                    break;
+                case "atan": // Perform arctangent operation, Radian 
+                    System.out.print("What number do you want in the atan? ");
+                    System.out.println(Math.atan(Math.toRadians(sc.nextInt())));
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            System.out.println("Which Operation? (sin, cos, tan, asin, acos, atan):");
+            String operation = sc.nextLine();
+            switch (operation) {
+                case "sin": // Perform sine operation
+                    System.out.print("What number do you want in the sin? ");
+                    System.out.println(Math.sin(sc.nextInt()));
+                    break;
+                case "cos": // Perform cosine operation
+                    System.out.print("What number do you want in the cos? ");
+                    System.out.println(Math.cos(sc.nextInt()));
+                    break;
+                case "tan": // Perform tangent operation
+                    System.out.print("What number do you want in the tan? ");
+                    System.out.println(Math.tan(sc.nextInt()));
+                    break;
+                case "asin": // Perform arcsine operation
+                    System.out.print("What number do you want in the asin? ");
+                    System.out.println(Math.asin(sc.nextInt()));
+                    break;
+                case "acos": // Perform arccosine operation
+                    System.out.print("What number do you want in the acos? ");
+                    System.out.println(Math.acos(sc.nextInt()));
+                    break;
+                case "atan": // Perform arctangent operation
+                    System.out.print("What number do you want in the atan? ");
+                    System.out.println(Math.atan(sc.nextInt()));
+                    break;
+                default:
+                    break;
+
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static long factorial() //11. factorial 
+    {  
+        Console.println("please enter a number to calculate factorial");
+        int x= Console.getIntegerInput("Enter a number: "); // ask user to type
+        if (x<0)
+        {
+        throw new IllegalArgumentException("Factroial not defined for negative numbers");
+        }
+        long result =1;  // factorial of zero is always zero 
+        for (int i=1;i <=x;i++)
+        {   
+        result = result * i;
+        }
+        Console.println("the answer is "+ result);
         return result;
 
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
     public static double logbase10(double x) // mehtod to calculate log base 10
     {
         if (x <= 0)
-        {
-        throw new IllegalArgumentException("Err");
+        {   
+        Console.println("Error: Logarithm is not defined for non-positive numbers.");
         }
         return Math.log10(x);  // return log10(X)
     }
@@ -45,10 +155,12 @@ class ScientificCalculator
     {
         if (x <= 0)
         {
-        throw new IllegalArgumentException("Err");
+        Console.println("Error: Natural log is not defined for non-positive numbers.");
         }
+        
         return Math.exp(x);  // return inverse ln(x)
-
+        
+    
     }
     public static double Inverseln(double x) // method to calculate inverse log
     {
@@ -56,16 +168,27 @@ class ScientificCalculator
         return Math.log(x);  // return ln(x)
 
     }
-
-    private double memory = 0.0; // starting value of memeory
+///////////////////////////////////////////////////////////////////////////////////////////////
     
-        public void memoryStorage(double x)
+    
+        public void memoryStorage(double y)
+    {
+        String input=Console.getStringInput("Would you like to save this number? yes or no").toLowerCase();
+        if ("yes".equals(input))
         {
-        memory = x;
+        memory = y;
         }
+        else if ("no".equals(input))
+        {
+            Console.println("The memory value is not saved");
+        }
+      
+        
+    }
         public void memoryClear()
         {
-        memory= 0.0;
+            Console.println("The memory value is cleared");
+            memory= 0.0;
         }
         public double memoryRecall()
         {
