@@ -8,15 +8,17 @@ package com.zipcodewilmington.scientificcalculator;
 
 class ScientificCalculator 
 {
+    private static double Currentvaluedisplay = 0.0; // current number on screen
+    private boolean Error = false;  // flag if an error happened
 
     public static long factorial(long x) //method to calculate factorial
     {
-        if (x<0)
-        {
-        throw new IllegalArgumentException("Factroial not defined for negative numbers");
-        }
+        //if (Currentvaluedisplay<0)
+        //{
+        //throw new IllegalArgumentException("Factroial not defined for negative numbers");
+        //}
         long result =1;  // factorial of zero is always zero 
-        for (int i=1;i <= x;i++)
+        for (int i=1;i <=Currentvaluedisplay;i++)
         {   
         result = result *i;
         }
@@ -71,11 +73,11 @@ class ScientificCalculator
         }
 
 
-    }
+}
 
     
 
 
-}
+
 
 

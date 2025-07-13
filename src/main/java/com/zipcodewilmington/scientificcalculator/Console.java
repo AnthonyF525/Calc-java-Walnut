@@ -22,11 +22,32 @@ public class Console {
         return userInput;
     }
 
-    public static Integer getIntegerInput(String prompt) {
-        return null;
+    public static Integer getIntegerInput(String prompt) 
+    {
+        while (true) 
+        {  
+            try {
+                String input = getStringInput(prompt);  // ask user to type
+                return Integer.parseInt(input);         // try converting to integer
+                } 
+            catch (NumberFormatException e) 
+                {
+                println("Invalid Please try again."); //print string to user
+                }
+        }
     }
 
     public static Double getDoubleInput(String prompt) {
-        return null;
+         while (true) 
+         { // keep asking until valid input
+            try {
+                String input = getStringInput(prompt); // ask user to type
+                return Double.parseDouble(input); // try converting to double
+                } 
+        catch (NumberFormatException e) 
+                {
+                println("Invalid Please try again."); // print string to user
+                }
+    }
     }
 }
