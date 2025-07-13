@@ -2,90 +2,71 @@ package com.zipcodewilmington.scientificcalculator;
 
 import java.util.Scanner;
 
-
-
-class JBMainApplication {
+public class JBMainApplication {
 
     public static void main(String[] args) {
+        Calculator calc = new Calculator();
         Scanner scanner = new Scanner(System.in);
-           System.out.println("\nCurrent Display: " + Currentvaluedisplay());
-        System.out.println("Enter operation (add, subtract, multiply, divide, change, sqrt, pow, inv, ): ");
-        String operation = scanner.nextLine();
 
-        int a = getNumber(scanner, "Enter first number: ");
-        int b = getNumber(scanner, "Enter second number: ");
+        while (true) {
+            System.out.println("\nCurrent Display: " + calc.getDisplay());
+            System.out.print("Enter operation (add, subtract, multiply, divide, square, sqrt, pow, inv, sign, clear, exit): ");
+            String input = scanner.nextLine().toLowerCase();
 
-        switch (operation.toLowerCase()) {
-            case "add":
-                System.out.println("Result: " + add(a, b));
-                break;
-            case "subtract":
-                System.out.println("Result: " + subtract(a, b));
-                break;
-            case "multiply":
-                System.out.println("Result: " + multiply(a, b));
-                break;
-            case "divide":
-                if (b != 0) {
-                    System.out.println("Result: " + divide(a, b));
-                } else {
-                    System.out.println("Error: Division by zero");
-                }
-                break;
-                case "sqrt":
-                System.out.println("What number do you want in sqrt: ");
-                double num = scanner.nextDouble();
-                if (num < 0) {
-                    System.out.println("Error: Cannot take square rootvof a negative number.");
-                } else {
-                    double result = Math.sqrt(num);
-                    System.out.println("Result: " + result);
-                }
-                break;
-                    default:
-                    break;
-                }
+            if (input.equals("exit")) break;
+
+            if (calc.hasError() && !input.equals("clear")) {
+                System.out.println("Error state! Type 'clear' to reset.");
+                continue;
             }
-           
 
-       
+            switch (input) {
+                case "add":
+                    calc.add(getDouble(scanner, "Enter number to add: "));
+                    break;
+                case "subtract":
+                    calc.subtract(getDouble(scanner, "Enter number to subtract: "));
+                    break;
+                case "multiply":
+                    calc.multiply(getDouble(scanner, "Enter number to multiply: "));
+                    break;
+                case "divide":
+                    calc.divide(getDouble(scanner, "Enter number to divide by: "));
+                    break;
+                case "square":
+                    calc.square();
+                    break;
+                case "sqrt":
+                    calc.sqrt();
+                    break;
+                case "pow":
+                    calc.exponentiate(getDouble(scanner, "Enter exponent (y): "));
+                    break;
+                case "inv":
+                    calc.inverse();
+                    break;
+                case "sign":
+                    calc.inverse();
+                    break;
+                case "clear":
+                    calc.clear();
+                    break;
+                default:
+                    System.out.println("Unknown operation.");
+            }
+        }
 
-    private static String Currentvaluedisplay() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Currentvaluedisplay'");
+        scanner.close();
     }
 
-
-
-
-    // Arithmetic methods
-    public static int add(int a, int b) {
-        return a + b;
-    }
-
-    public static int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public static int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public static double divide(int a, int b) {
-        return (double) a / b;
-    }
-
-    private static int getNumber(Scanner scanner, String prompt) {
+    private static double getDouble(Scanner scanner, String prompt) {
         System.out.print(prompt);
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid number, try again.");
-            scanner.next(); // discard invalid input
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Invalid input. Try again.");
+            scanner.next();
             System.out.print(prompt);
         }
-        return scanner.nextInt();
+        return scanner.nextDouble();
     }
 }
-
-
-
 
