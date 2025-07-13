@@ -10,6 +10,30 @@ import java.util.*;
 class Switch {
     public static void main (String[] args) {
         Scanner sd = new Scanner(System.in);
+
+        System.out.println("Decimal, Binary, Octal, or Hex");
+        String mode = sd.nextLine();
+        
+
+        switch (mode.toLowerCase()) {
+            case "decimal":
+                System.out.println(mode + " mode selected.");
+                break;
+            case "binary":
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toBinaryString(sd.nextInt()));
+                break;
+            case "octal":
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toOctalString(sd.nextInt()));
+                break;
+            case "hex":
+                System.out.println(mode + " mode selected.");
+                System.out.println(Integer.toHexString(sd.nextInt()));
+                break;
+            default:
+                break;
+        }
     }
     // public static void switchDisplayMode(String mode) {
        
