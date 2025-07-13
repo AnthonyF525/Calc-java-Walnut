@@ -41,29 +41,29 @@ Each operation should automatically update the display
 
 ### Scientific Features
 
-- Switch display mode (binary, octal, decimal, hexadecimal)
+- Switch display mode (binary, octal, decimal, hexadecimal) DONE
   - `switchDisplayMode()` should rotate through the options
   - `switchDisplayMode(String mode)` should set the display to the mode given
-- Memory - Store up to one numeric value in memory for recall later (default to 0) *
+- Memory - Store up to one numeric value in memory for recall later (default to 0) * DONE
   - (`M+` key) Add the currently displayed value to the value in memory (store in memory and update display) *
   - (`MC` key) Reset memory *
   - (`MRC` key) Recall the current value from memory to the display *
-- Trig functions
+- Trig functions DONE
   - Sine - Calculate the sine of the displayed value and display it
   - Cosine - Calculate the cosine of the displayed value and display it
   - Tangent - Calculate the tangent of the displayed value and display it
   - Inverse Sine
   - Inverse Cosine
   - Inverse Tangent
-- Switch trig units mode (Degrees, Radians)
+- Switch trig units mode (Degrees, Radians) DONE
   - `switchUnitsMode()` should rotate through the options
   - `switchUnitsMode(String mode)` should set the trig units to the type given
-- Logarithmic functions
+- Logarithmic functions DONE
   - Log
   - 10<sup>x</sup> (inverse logarithm)
   - Ln (natural logarithm)
   - e<sup>x</sup> (inverse natural logarithm)
-- Factorial function  
+- Factorial function  DONE
 
 
 ### Custom Features

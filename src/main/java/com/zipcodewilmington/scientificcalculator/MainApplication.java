@@ -50,13 +50,15 @@ public class MainApplication {
                 break;
                  case "9":
                 Console.println("Switch mode");
+                calc.switchmode(); // call switch mode function this is working
                 break;
                 case "10":
                 Console.println("Trig functions");
+                calc.trigfunction(); // call trig function this is working
                 break;
                  case "11":
                 Console.println("factorial");
-               // calc.factorial();
+                calc.factorial();  // call factorial function this is working
                 break;
                  case "12":
                 Console.println("Percentage");
@@ -64,6 +66,37 @@ public class MainApplication {
                 case "13":
                 Console.println("Cuberoot");
                 break;
+                case "14":  // log functions is working
+                 Console.println("Please enter a number that will be used to calculate log functions");
+                            double x=Console.getDoubleInput("Enter a number");
+                    Console.println("Please enter which log function you would like to use:\n1log,2ln,3inverselog,4inverseln");
+                    String log=Console.getStringInput("Enter a number").toLowerCase();
+                        switch (log)
+                        {
+                            case "1":
+                            Console.println("The log base 10  is %f",calc.logbase10(x));
+                            break;
+                            case "2":
+                            Console.println("The natural log  is %f",calc.ln(x));
+                            break;
+                            case "3":
+                            Console.println("The inverse natural log  is %f",calc.Inverseln(x));
+                            break;
+                            case "4":
+                            Console.println("The inverse log base 10  is %f",calc.Inverselog10(x));
+                            break;
+                     }   
+                case ("save"): // this is working
+                    double y=Console.getDoubleInput("Enter a number");
+                    calc.memoryStorage(y);
+                break;
+                case ("clear"): // this is working
+                    calc.memoryClear();
+                break;
+                case("recall"): // this is working
+                    Console.println("The memory value is %f", calc.memoryRecall());
+                break;
+                     
 
                 default:
                 Console.println("Please try again");
@@ -71,17 +104,6 @@ public class MainApplication {
             
         }
         
-       
-
-
-
-       /* String s = Console.getStringInput("Enter a string");
-        Integer i = Console.getIntegerInput("Enter an integer");
-        Double d = Console.getDoubleInput("Enter a double.");
-
-        Console.println("The user input %s as a string", s);
-        Console.println("The user input %s as a integer", i);
-        Console.println("The user input %s as a d", d); */
     }
 
 }
