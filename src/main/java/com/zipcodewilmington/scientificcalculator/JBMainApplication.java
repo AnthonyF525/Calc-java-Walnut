@@ -85,7 +85,7 @@ class JBMainApplication {
         return scanner.nextInt();
     }
 }
-}
+
 
 
 
