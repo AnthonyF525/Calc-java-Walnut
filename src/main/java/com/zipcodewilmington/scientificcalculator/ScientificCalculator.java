@@ -8,11 +8,95 @@ package com.zipcodewilmington.scientificcalculator;
 import java.util.Scanner;
 
 class ScientificCalculator 
-{   private static double Currentvaluedisplay = 0.0; // current number on screen
-    private boolean Error = false;  // flag if an error happened
+{   
+    private static double display = 0.0; // current number on screen
+    private boolean hasError = false;  // flag if an error happened
     public double memory = 0.0; // starting value of memory
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+// basic calculator functions Josiah`work
+public double getDisplayvalue()
+{
+    return display;   // return the current value on the screen
+}
+public String getDisplay() 
+    {
+        return hasError ? "Err" : String.valueOf(display);
+    }
+
+    public boolean hasError() 
+    {
+        return hasError;
+    }
+
+    public void clear() 
+    {
+        display = 0.0;
+        hasError = false;
+    }
+    public void add(double value) 
+    {
+        display += value;
+    }
+
+    public void subtract(double value) 
+    {
+        display -= value;
+    }
+
+    public void multiply(double value) 
+    {
+        display *= value;
+    }
+
+    public void divide(double value) 
+    {
+        if (value == 0) {
+            setError();
+        } else {
+            display /= value;
+        }
+    }
+
+    public void square() 
+    {
+        display *= display;
+    }
+
+    public void sqrt() 
+    {
+        if (display < 0) {
+            setError();
+        } else {
+            display = Math.sqrt(display);
+        }
+    }
+
+    public void exponentiate(double exponent) 
+    {
+        display = Math.pow(display, exponent);
+    }
+
+    public void inverse() 
+    {
+
+        if (display == 0) {
+            setError();
+        } else {
+            display = 1 / display;
+        }
+    }
+
+    public void invertSign() 
+    {
+        display = -display;
+    }
+
+    private void setError() 
+    {
+        display = Double.NaN;
+        hasError = true;
+    }
 
     // Anthony's work
     public static void switchmode () // 9.switch mode
@@ -43,7 +127,6 @@ class ScientificCalculator
                 break;
         }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////
     public static void trigfunction() // function 10
     {
         Scanner sc = new Scanner(System.in);
@@ -118,6 +201,7 @@ class ScientificCalculator
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Younis's work
     public static long factorial() //11. factorial 
     {  
         Console.println("please enter a number to calculate factorial");
@@ -135,7 +219,7 @@ class ScientificCalculator
         return result;
 
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static double logbase10(double x) // mehtod to calculate log base 10
     {
         if (x <= 0)
@@ -168,9 +252,6 @@ class ScientificCalculator
         return Math.log(x);  // return ln(x)
 
     }
-///////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
         public void memoryStorage(double y)
     {
         String input=Console.getStringInput("Would you like to save this number? yes or no").toLowerCase();
@@ -194,8 +275,38 @@ class ScientificCalculator
         {
         return memory;
         }
+    public long Percentage() 
+    {
+        Console.println("Enter the part value:");
+        int x = Console.getIntegerInput("Enter a number:");
+        Console.println("Enter the total value:");
+        int y = Console.getIntegerInput("Enter a number:");
+
+        if (y <= 0) {
+            Console.println("Error: Total must be greater than 0.");
+            return 0;
+        }
+
+        long result = (x * 100) / y;
+        Console.println("The percentage is " + result + "%");
+        return result;
+    }
+    public long Cuberoot() // 13.cuberoot
+    {
+        Console.println("Enter a number to calculate the cube root:");
+        double x = Console.getDoubleInput("Enter a number:");
+        if (x < 0) {
+            Console.println("Error: Cube root is not defined for negative numbers.");
+            return 0;
+        }
+        long result = (long) Math.cbrt(x);
+        Console.println("The cube root of is " + result);
+        return result;
+    }
 
 
+
+        
 }
 
     
