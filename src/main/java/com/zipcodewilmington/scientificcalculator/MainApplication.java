@@ -12,9 +12,9 @@ class MainApplication {
     {
         Console.println("Welcome to walnut Scientific calculator!");
         Console.println("The current display value is"); //current value
-        Console.println("1.Addition\n2.Substraction\n3.multiplication\n4.division\n5.Square\6.Square root\n7.Inverse\n8.Invert sign");
+        Console.println("1.Addition\n2.Substraction\n3.multiplication\n4.division\n5.Square\n6.Square root\n7.Inverse\n8.Invert sign");
         Console.println("9.Switch mode\n10.Trig functions \n11.factorial\n12.Percentage\n13.Cuberoot");
-        Console.println("type exit to leave the calculator/ntype save to save a number in memory\n type memory clear to clear memory\n type recall to recall memory");
+        Console.println("type exit to leave the calculator\ntype save to save a number in memory\n type memory clear to clear memory\n type recall to recall memory");
         ScientificCalculator calc = new ScientificCalculator(); // create calculator
         Scanner scanner = new Scanner(System.in);
         while(true)
