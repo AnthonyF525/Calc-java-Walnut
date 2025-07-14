@@ -11,7 +11,7 @@ package com.zipcodewilmington.scientific_calculator;
     
     import static org.junit.jupiter.api.Assertions.*;
     
-    public class CalculatorTest {
+    public class ScientificCalculatorTest {
     
         private Calculator calc;
     

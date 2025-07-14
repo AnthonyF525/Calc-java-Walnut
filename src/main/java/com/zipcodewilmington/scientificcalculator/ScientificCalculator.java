@@ -114,17 +114,6 @@ class ScientificCalculator
             memory = display;
         }
     }
-
-    public void memoryRecall() {
-        if (!hasError) {
-            display = memory;
-        }
-    }
-
-    public void memoryClear() {
-        memory = 0.0;
-    }
-
     public void memoryAdd() {
         if (!hasError) {
             memory += display;
@@ -140,7 +129,7 @@ class ScientificCalculator
     public double getMemoryValue() {
         return memory;
     }
-}
+
     // Anthony's work
     public static void switchmode () // 9.switch mode
     {
