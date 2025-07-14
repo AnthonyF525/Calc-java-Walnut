@@ -1,15 +1,24 @@
 package com.zipcodewilmington.scientificcalculator;
 
 public class Calculator {
-    private double display = 0.0;
-    private boolean hasError = false;
+
+    private double display;
+    private boolean hasError;
+    private double memory;
+
+    public Calculator() {
+        this.display = 0.0;
+        this.memory = 0.0;
+        this.hasError = false;
+    }
+
+    // Display methods
+    public String getDisplay() {
+        return hasError ? "Err" : String.valueOf(display);
+    }
 
     public double getDisplayValue() {
         return display;
-    }
-
-    public String getDisplay() {
-        return hasError ? "Err" : String.valueOf(display);
     }
 
     public boolean hasError() {
@@ -21,56 +30,104 @@ public class Calculator {
         hasError = false;
     }
 
+    public void set(double value) {
+        if (!hasError) {
+            display = value;
+        }
+    }
+
+    // Arithmetic
     public void add(double value) {
-        display += value;
+        if (!hasError) display += value;
     }
 
     public void subtract(double value) {
-        display -= value;
+        if (!hasError) display -= value;
     }
 
     public void multiply(double value) {
-        display *= value;
+        if (!hasError) display *= value;
     }
 
     public void divide(double value) {
-        if (value == 0) {
-            setError();
-        } else {
-            display /= value;
+        if (!hasError) {
+            if (value == 0) {
+                setError();
+            } else {
+                display /= value;
+            }
         }
     }
 
     public void square() {
-        display *= display;
+        if (!hasError) display *= display;
     }
 
     public void sqrt() {
-        if (display < 0) {
-            setError();
-        } else {
-            display = Math.sqrt(display);
+        if (!hasError) {
+            if (display < 0) {
+                setError();
+            } else {
+                display = Math.sqrt(display);
+            }
         }
     }
 
-    public void exponentiate(double exponent) {
-        display = Math.pow(display, exponent);
+    public void power(double exponent) {
+        if (!hasError) display = Math.pow(display, exponent);
     }
 
     public void inverse() {
-        if (display == 0) {
-            setError();
-        } else {
-            display = 1 / display;
+        if (!hasError) {
+            if (display == 0) {
+                setError();
+            } else {
+                display = 1 / display;
+            }
         }
     }
 
     public void invertSign() {
-        display = -display;
+        if (!hasError) display = -display;
     }
 
     private void setError() {
         display = Double.NaN;
         hasError = true;
     }
+
+    // Memory Functions
+
+    public void memoryStore() {
+        if (!hasError) {
+            memory = display;
+        }
+    }
+
+    public void memoryRecall() {
+        if (!hasError) {
+            display = memory;
+        }
+    }
+
+    public void memoryClear() {
+        memory = 0.0;
+    }
+
+    public void memoryAdd() {
+        if (!hasError) {
+            memory += display;
+        }
+    }
+
+    public void memorySubtract() {
+        if (!hasError) {
+            memory -= display;
+        }
+    }
+
+    public double getMemoryValue() {
+        return memory;
+    }
 }
+
