@@ -2,7 +2,7 @@ package com.zipcodewilmington.scientificcalculator;
 
 public class JBMainApplication {
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
+        ScientificCalculator calc = new ScientificCalculator();
         boolean running = true;
 
         Console.println("Welcome to Walnut Scientific Calculator!");
